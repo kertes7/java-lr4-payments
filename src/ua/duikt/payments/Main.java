@@ -3,6 +3,7 @@ package ua.duikt.payments;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
+import ua.duikt.payments.method.ApplePayPayment;
 import ua.duikt.payments.method.CardPayment;
 import ua.duikt.payments.method.CryptoPayment;
 import ua.duikt.payments.method.PayPalPayment;
@@ -34,5 +35,10 @@ public class Main {
         new RefundService(new CardPayment(), new EmailNotifier()).refund(100.00);
         new RefundService(new PayPalPayment(), new SmsNotifier()).refund(50.00);
         // new RefundService(new CryptoPayment(), ...);   // помилка компіляції: CryptoPayment не є Refundable
+
+        System.out.println();
+        System.out.println("=== Нова реалізація ApplePayPayment (сервіси не змінювались) ===");
+        new PaymentService(new ApplePayPayment(), new SmsNotifier()).pay(75.00);
+        new RefundService(new ApplePayPayment(), new EmailNotifier()).refund(25.00);
     }
 }
