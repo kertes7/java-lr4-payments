@@ -1,0 +1,5 @@
+errors\E5_CryptoRefund.java:8: error: incompatible types: CryptoPayment cannot be converted to Refundable
+        new RefundService(new CryptoPayment(), new EmailNotifier()).refund(10);
+                          ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+1 error
